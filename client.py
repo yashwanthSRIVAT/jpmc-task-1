@@ -55,14 +55,14 @@ def getRatio(price_a, price_b):
 if __name__ == "__main__":
     # Query the price once every N seconds.
     for _ in iter(range(N)):
-        
+
         prices = {}
         # the two correlated quotes will be stored insdide quotes variable, and in
         # the for loop below, we are iterating twice to print these two quotes
         quotes = json.loads(urllib.request.urlopen(QUERY.format(random.random())).read())
 
         """ ----------- Update to get the ratio --------------- """
-        # moving prices outside main to avoid repeated memory creation and deletion
+        
         for quote in quotes:
             stock, bid_price, ask_price, price = getDataPoint(quote)
             print("Quoted %s at (bid:%s, ask:%s, price:%s)" % (stock, bid_price, ask_price, price))
